@@ -20,14 +20,19 @@ const CourseOutlineTrigger = ({ intl, isMobileView }) => {
   const isDisplayForDesktopView = !isMobileView && !shouldDisplayFullScreen && currentSidebar !== ID;
   const isDisplayForMobileView = isMobileView && shouldDisplayFullScreen;
 
-  if ((!isDisplayForDesktopView && !isDisplayForMobileView) || !isEnabledSidebar || isActiveEntranceExam) {
+  // ### Change 20250113-1731
+  // if ((!isDisplayForDesktopView && !isDisplayForMobileView) || !isEnabledSidebar || isActiveEntranceExam) {
+  //   return null;
+  // }
+  if ((!isDisplayForDesktopView && isDisplayForMobileView) || !isEnabledSidebar || isActiveEntranceExam) {
     return null;
   }
 
   return (
     <div className={classNames('outline-sidebar-heading-wrapper bg-light-200 collapsed align-self-start', {
       'flex-shrink-0 mr-4 p-2.5': isDisplayForDesktopView,
-      'p-0': isDisplayForMobileView,
+      // ### Change 20250113-1731
+      // 'p-0': isDisplayForMobileView, 
     })}
     >
       <IconButton
